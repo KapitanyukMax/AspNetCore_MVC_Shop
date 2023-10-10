@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore_MVC_Shop", "AspNetCore_MVC_Shop\AspNetCore_MVC_Shop.csproj", "{E09A7515-F4D0-45DE-8B93-77EFF4CA7A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A40B03C9-F298-4957-A789-974B1B19770D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E09A7515-F4D0-45DE-8B93-77EFF4CA7A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E09A7515-F4D0-45DE-8B93-77EFF4CA7A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E09A7515-F4D0-45DE-8B93-77EFF4CA7A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E09A7515-F4D0-45DE-8B93-77EFF4CA7A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40B03C9-F298-4957-A789-974B1B19770D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40B03C9-F298-4957-A789-974B1B19770D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40B03C9-F298-4957-A789-974B1B19770D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40B03C9-F298-4957-A789-974B1B19770D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2A66BBE-94D4-417C-BD75-A76A36E67DE2}
+	EndGlobalSection
+EndGlobal
