@@ -17,7 +17,14 @@ namespace DataAccess
         {
             base.OnConfiguring(optionsBuilder);
 
-            //optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;
+                                          Initial Catalog=ShopDb;
+                                          Integrated Security=True;
+                                          Connect Timeout=30;
+                                          Encrypt=False;
+                                          Trust Server Certificate=False;
+                                          Application Intent=ReadWrite;
+                                          Multi Subnet Failover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

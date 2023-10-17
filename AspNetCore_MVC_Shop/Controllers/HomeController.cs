@@ -2,21 +2,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using DataAccess;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace AspNetCore_MVC_Shop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ShopDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ShopDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Items.Include(i => i.Category).ToList());
         }
 
         public IActionResult Privacy()

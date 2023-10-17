@@ -1,9 +1,8 @@
 ﻿@model DataAccess.Entities.Item;
 
-<h1>Edit Item Information</h1>
+<h1>Create new item</h1>
 
 <form asp-action="Edit" method="post" class="row g-3">
-    <input asp-for="Id" hidden />
     <div class="col-12">
         <label asp-for="Name" class="form-label">Name</label>
         <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
@@ -44,6 +43,6 @@
         <a asp-action="Index" class="btn btn-secondary w-75 m-auto">Cancel</a>
     </div>
     <div class="col-6">
-        <button type="submit" class="btn btn-warning w-75 m-auto">Edit</button>
+        <button type="submit" class="btn btn-success w-75 m-auto">Create</button>
     </div>
 </form>

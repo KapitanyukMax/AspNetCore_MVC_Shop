@@ -10,32 +10,32 @@ namespace AspNetCore_MVC_Shop.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly ShopDbContext context;
+        private readonly ShopDbContext _context;
 
         public ItemsController(ShopDbContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
         private void LoadCategories()
         {
-            ViewBag.Categories = new SelectList(context.Categories.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "Name");
         }
 
         public IActionResult Index()
         {
-            return View(context.Items.Include(i => i.Category).ToList());
+            return View(_context.Items.Include(i => i.Category).ToList());
         }
 
         public IActionResult Delete(int itemId)
         {
-            var item = context.Items.Find(itemId);
+            var item = _context.Items.Find(itemId);
 
             if (item == null)
                 return NotFound();
 
-            context.Items.Remove(item);
-            context.SaveChanges();
+            _context.Items.Remove(item);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -58,8 +58,8 @@ namespace AspNetCore_MVC_Shop.Controllers
                 return View(item);
             }
 
-            context.Items.Add(item);
-            context.SaveChanges();
+            _context.Items.Add(item);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -67,7 +67,7 @@ namespace AspNetCore_MVC_Shop.Controllers
         [HttpGet]
         public IActionResult Edit(int itemId)
         {
-            var item = context.Items.Find(itemId);
+            var item = _context.Items.Find(itemId);
 
             if (item == null)
                 return NotFound();
@@ -87,8 +87,8 @@ namespace AspNetCore_MVC_Shop.Controllers
                 return View(item);
             }
 
-            context.Items.Update(item);
-            context.SaveChanges();
+            _context.Items.Update(item);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
