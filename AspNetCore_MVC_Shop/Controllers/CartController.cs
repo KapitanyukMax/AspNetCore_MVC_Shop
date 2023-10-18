@@ -29,11 +29,20 @@ namespace AspNetCore_MVC_Shop.Controllers
 
         public IActionResult Add(int itemId)
         {
-            var cartItemIds = HttpContext.Session.Get<List<int>>("cart_items");
-            cartItemIds!.Add(itemId);
+            var cartItemIds = HttpContext.Session.Get<List<int>>("cart_items") ?? new();
+            cartItemIds.Add(itemId);
 
             HttpContext.Session.Set("cart_items", cartItemIds);
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Remove(int itemId)
+        {
+            var cartItemIds = HttpContext.Session.Get<List<int>>("cart_items") ?? new();
+            cartItemIds.Remove(itemId);
+
+            HttpContext.Session.Set("cart_items", cartItemIds);
+            return RedirectToAction("Index");
         }
     }
 }

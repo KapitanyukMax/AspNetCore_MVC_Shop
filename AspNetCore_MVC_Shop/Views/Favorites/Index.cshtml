@@ -2,10 +2,10 @@
 
 <div class="card text-center">
     <div class="card-header">
-        My Cart
+        Favorites
     </div>
     <div class="card-body">
-        <h5 class="card-title">Cart Items List</h5>
+        <h5 class="card-title">Favorite Item List</h5>
 
         <ul>
             @foreach (var item in Model)
@@ -13,18 +13,12 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center my-2">
                     @item.Name
                     <span class="badge bg-danger rounded-pill margin-left-1 margin-right-auto">@item.Price$</span>
-                    <a asp-controller="Cart" asp-action="Remove" asp-route-itemId="@item.Id" class="btn btn-primary">Remove from Cart</a>
+                    <a asp-controller="Favorites" asp-action="Remove" asp-route-itemId="@item.Id" class="btn btn-primary">Remove from Favorites</a>
                 </li>
             }
         </ul>
         <div>
-            <a href="#" class="btn btn-primary">Confirm</a>
-        </div>
-        <div>
             <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary mt-2">Continue Shopping</a>
         </div>
-    </div>
-    <div class="card-footer text-muted">
-        Total: <span class="badge bg-pimary">@Model.Sum(i => i.Price)$</span>
     </div>
 </div>
