@@ -7,10 +7,18 @@ using DataAccess;
 using System;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
+using DataAccess.Entities;
+using Shop_MVC_VPD_121.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = builder.Configuration.GetConnectionString("LocalDb");
+
+builder.Services.AddIdentity<User, IdentityRole>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<ShopDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,6 +39,13 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    SeedExtensions.SeedRoles(serviceProvider).Wait();
+    SeedExtensions.SeedAdmin(serviceProvider).Wait();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -44,9 +59,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.UseSession();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",

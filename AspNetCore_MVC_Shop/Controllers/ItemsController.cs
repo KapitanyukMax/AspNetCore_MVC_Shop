@@ -5,9 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net.Http.Headers;
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Authorization;
+using AspNetCore_MVC_Shop.Models;
+using AspNetCore_MVC_Shop.Helpers;
 
 namespace AspNetCore_MVC_Shop.Controllers
 {
+    [Authorize(Roles = Constants.AdminRole)]
     public class ItemsController : Controller
     {
         private readonly ShopDbContext _context;
@@ -22,6 +26,7 @@ namespace AspNetCore_MVC_Shop.Controllers
             ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "Name");
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_context.Items.Include(i => i.Category).ToList());

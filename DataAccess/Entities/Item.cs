@@ -1,4 +1,6 @@
-﻿namespace DataAccess.Entities
+﻿using System.Collections.Generic;
+
+namespace DataAccess.Entities
 {
     public class Item
     {
@@ -23,5 +25,7 @@
         public int CategoryId { get; set; }
 
         public Category? Category { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
     }
 }
